@@ -10,14 +10,6 @@ const bubbleSort = (list) => {
 		[list[i], list[j]] = [list[j], list[i]]
 	}
 
-	for (let i = list.length; i > 0; i--) {
-		for (let j = 0; j < i-1; j++) {
-			if (list[j] > list[j+1]) {
-				console.log("j", j, list[j], "j+1", j+1, list[j+1])
-				swapFunction(list,j,j+1)
-			}
-		}
-	}
 
 	return list
 
