@@ -13,6 +13,7 @@ const bubbleSort = (list) => {
 	for (let i = list.length; i > 0; i--) {
 		for (let j = 0; j < i-1; j++) {
 			if (list[j] > list[j+1]) {
+				console.log("j", j, list[j], "j+1", j+1, list[j+1])
 				swapFunction(list,j,j+1)
 			}
 		}
@@ -24,5 +25,5 @@ const bubbleSort = (list) => {
 
 let example1 = [5,4,3,2,1]
 let example2 = [6,4,9,2,7]
-let result = bubbleSort(example2)
+let result = bubbleSort(example1)
 console.log(result)
