@@ -8,7 +8,7 @@ def bubbleSort(array):
 				array[j+1] = temp
 	return array
 
-example1 = [5,4,8,2,1,5,3,9]
+example1 = [3,2]
 example2 = [9,3,7,4,6]
 
 result = bubbleSort(example1)

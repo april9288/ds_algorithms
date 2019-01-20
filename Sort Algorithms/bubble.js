@@ -13,7 +13,7 @@ const bubbleSort = (list) => {
 	return list
 }
 
-let example1 = [5,4,3,2,1]
+let example1 = [3,2]
 let example2 = [5,7,4,9,1,8]
 let result = bubbleSort(example1)
 console.log(result)
