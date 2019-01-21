@@ -18,7 +18,7 @@ class Queue{
 		let newNode = new Node(value)
 		if (this.length === 0) {
 			this.first = newNode
-			this.last = newNode
+			this.last = this.first
 		} else {
 			this.last.next = newNode
 			this.last = newNode
@@ -27,23 +27,25 @@ class Queue{
 		return this
 	}
 	dq() {
-		let dq
-		if (this.length <= 0) {
-			return null
-		} else if (this.length === 0) {
-			dq = this.first
+		if (this.length === 0) {
+			return "Nothing to dq"
+		}
+
+		let popped
+		if (this.length === 1) {
+			popped = this.first
 			this.first = null
 			this.last = null
 		} else {
-			dq = this.first
+			popped = this.first
 			this.first = this.first.next
 		}
 		this.length--
-		return dq
+		return popped
 	}
 	isEmpty() {
 		return Boolean(!this.length)
 	}
 }
 
-myQueue = new Queue()
+let myQueue = new Queue()
