@@ -1,12 +1,12 @@
 class Node {
-	constructor(value) {
+	constructor(value){
 		this.value = value
 		this.next = null
 	}
 }
 
 class Stack {
-	constructor() {
+	constructor(){
 		this.top = null
 		this.bottom = null
 		this.length = 0
@@ -14,38 +14,35 @@ class Stack {
 	peek(){
 		return this.top
 	}
+	isEmpty(){
+		return Boolean(!this.length)
+	}
 	push(value){
 		let newNode = new Node(value)
 		if (this.length === 0) {
 			this.top = newNode
 			this.bottom = newNode
 		} else {
-			let originalTop = this.top
+			newNode.next = this.top
 			this.top = newNode
-			this.top.next = originalTop
 		}
 		this.length++
 		return this
 	}
 	pop(){
-		let popped
-		if (this.top) {
-			popped = this.top.value
-		} 
+		if (this.length === 0) {
+			return "Nothing to pop"
+		}
 
-		if (this.length > 1) {
-			this.top = this.top.next
-		} else if (this.length === 1) {
-			this.bottom = null
+		let poppped = this.top
+		if (this.length === 1) {
 			this.top = null
+			this.bottom = null
 		} else {
-			return null
+			this.top = this.top.next
 		}
 		this.length--
-		return popped
-	}
-	isEmpty(){
-		return Boolean(!this.length)
+		return poppped.value
 	}
 }
 
