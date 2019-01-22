@@ -15,15 +15,38 @@ class myArray:
 		return self
 
 	def pop(self):
-		
+		if (self.length == 0):
+			return "Nothing to pop"
+		else:
+			popped = self.data[self.length-1]
+			del self.data[self.length-1]
+			self.length -= 1
+			return popped
 
 	def shift(self):
-		pass
+		if (self.length == 0):
+			return "Nothing to shift"
+		else:
+			popped = self.data[0]
+			for i in range(self.length-1):
+				self.data[i] = self.data[i+1]
+			del self.data[self.length-1]
+			self.length -= 1
+			return popped
 
 	def unshift(self, value):
-		pass
+		if (self.length == 0):
+			self.data[0] = value
+		else:
+			for i in range(self.length, 0, -1):
+				self.data[i] = self.data[i-1]
+			self.data[0] = value
+		self.length += 1
+		return self
+
+
 
 mmmArray = myArray()
-mmmArray.push(123)
+mmmArray.unshift("heyy")
 print(mmmArray.printArray())
-print(mmmArray.get(0))
+print(mmmArray.length)
