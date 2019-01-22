@@ -37,23 +37,22 @@ class myArray{
 		}
 	}
 	unshift(item){
-		
-	}
-	insert(index, item){
-
-	}
-	remove(index){
-
+		if (this.length !== 0) {
+			for (let i = this.length; i > 0; i--) {
+				this.data[i] = this.data[i-1]
+			}
+			this.data[0] = item
+			this.length++
+			return this
+		} else if (this.length === 0) {
+			this.data[0] = item
+		} else {
+			return "Nothing to unshift"
+		}
 	}
 	printArray(){
 		return Object.values(this.data)
 	}
 }
 
-let mymymymyArray = new myArray()
-mymymymyArray.push(0)
-mymymymyArray.push(10)
-mymymymyArray.push(20)
-console.log("shifted value : " , mymymymyArray.shift())
-console.log("current array : " , mymymymyArray.printArray())
-console.log(mymymymyArray)
+let myyyArray = new myArray()
