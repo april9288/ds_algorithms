@@ -1,16 +1,16 @@
 class Node {
-	constructor(value) {
+	constructor(value){
 		this.value = value
 		this.next = null
 	}
 }
-class LinkedList {
-	constructor(value) {
+class SinglyLL {
+	constructor(){
 		this.head = null
 		this.tail = null
 		this.length = 0
 	}
-	append(value) {
+	append(value){
 		let newNode = new Node(value)
 		if (this.length === 0) {
 			this.head = newNode
@@ -22,7 +22,7 @@ class LinkedList {
 		this.length++
 		return this
 	}
-	prepend(value) {
+	prepend(value){
 		let newNode = new Node(value)
 		if (this.length === 0) {
 			this.head = newNode
@@ -34,58 +34,80 @@ class LinkedList {
 		this.length++
 		return this
 	}
-	printList() {
-		let array = []
-		let currentNode = this.head
-		while(currentNode) {
-			array.push(currentNode.value)
-			currentNode = currentNode.next
+	insert(index, value){
+		if (index < 0 || index > this.length) {
+			return "Wrong input"
 		}
-		return array
-	}
-	insert(index, value) {
-		if (index < 1) {
-			this.prepend(value)
-		} else if ( index >= this.length) {
-			this.append(value)
-		} else {
-			let newNode = new Node(value)
-			let leader = this.traverse(index - 1)
-			newNode.next = leader.next
-			leader.next = newNode
-			this.length++
-			return this
-		}
-	}
-	remove(index) {
-		if (this.length === 0 || index >= this.length || index < 0) {
-			return "Nothing to remove"
+
+		if (this.length === 0 || index === this.length) {
+			return this.append(value)
 		}
 
 		if (index === 0) {
-			this.head = this.head.next
-		} else if (index === this.length-1) {
-			let leader = this.traverse(this.length-2)
-			this.tail = leader
-			leader.next = null
-		} else {
-			let leader = this.traverse(index - 1)
-			let currentNode = leader.next
-			leader.next = currentNode.next
+			return this.prepend(value)
 		}
-		this.length--
+
+		let newNode = new Node(value)
+		let leader = this.traverse(index - 1)
+		newNode.next = leader.next
+		leader.next = newNode
+		this.length++
 		return this
 	}
-	traverse(index) { //O(n)
-		let currentNode = this.head
+	remove(index){
+		if (this.length === 0 || index < 0 || index >= this.length) {
+			return "Nothing to remove"
+		}
+		if (this.length === 1) {
+			let popped = this.head
+			this.head = null
+			this.tail = this.head
+			this.length--
+			return popped
+		}
+		if (index === 0) {
+			let popped = this.head
+			this.head = this.head.next
+			this.length--
+			return popped
+		}
+		if (index === this.length-1) {
+			let popped = this.tail
+			let leader = this.traverse(index-1)
+			leader.next = null
+			this.tail = leader
+			this.length--
+			return popped
+		} else {
+			let leader = this.traverse(index-1)
+			let willBeRemoved = leader.next
+			leader.next = willBeRemoved.next
+			this.length--
+			return willBeRemoved
+		}
+	}
+	traverse(index){
+		let curr = this.head
 		let counter = 0
-		while(counter < index) {
-			currentNode = currentNode.next
+		while (counter < index) {
+			curr = curr.next
 			counter++
 		}
-		return currentNode
+		return curr
 	}
+	isEmpty() {
+		return Boolean(!this.length)
+	}
+	printList() {
+		let list = []
+		let curr = this.head
+		while(curr) {
+			list.push(curr.value)
+			curr = curr.next
+		}
+		return list
+	}
+
 }
 
-
-let myLL = new LinkedList()
+let mylist = new SinglyLL()
