@@ -95,6 +95,15 @@ class SinglyLL {
 		}
 		return curr
 	}
+	set(index, value){
+		if (this.length === 0 || index < 0 || index >= this.length){
+			return "Nothing to Set"
+		}
+
+		let curr = this.traverse(index)
+		curr.value = value
+		return curr
+	}
 	isEmpty() {
 		return Boolean(!this.length)
 	}
@@ -108,7 +117,26 @@ class SinglyLL {
 		return list
 	}
 	reverse(){
+		if (this.length < 2) {
+			return "Nothing to return"
+		}
+		let first = this.head
+		let second = first.next
+		let third = second.next
+
+		first.next = null
+		this.tail = first
+
 		
+		while(third) {
+			second.next = first
+
+			first = second
+			second = third
+			third = second.next
+		}
+		second.next = first
+		this.head = second
 	}
 
 }
