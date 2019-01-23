@@ -107,6 +107,9 @@ class SinglyLL {
 		}
 		return list
 	}
+	reverse(){
+		
+	}
 
 }
 
