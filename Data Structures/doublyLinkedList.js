@@ -92,7 +92,6 @@ class DoublyLinkedList {
 			popped = this.tail
 			this.tail = this.tail.prev
 			this.tail.next = null
-
 		} else {
 			let leading = this.traverse(index-1)
 			popped = leading.next
