@@ -6,67 +6,56 @@ class Node {
 	}
 }
 
-class BinarySearchTree {
+class Tree {
 	constructor() {
 		this.root = null
 	}
 	insert(value) {
 		let newNode = new Node(value)
+
 		if (this.root === null) {
 			this.root = newNode
-		} else {
-			let currentNode = this.root
-			while(true) {
-				if (value < currentNode.value) {
-					if (!currentNode.left) {
-						currentNode.left = newNode
-						return this
-					}
-
-					currentNode = currentNode.left
-				} else {
-					if (!currentNode.right) {
-						currentNode.right = newNode
-						return this
-					}
-
-					currentNode = currentNode.right
-				}
-			}
+			return this
 		}
 
+		let curr = this.root
+		while(true) {
+			if (value < curr.value) {
+				//left
+				if (!curr.left) {
+					curr.left = newNode
+					return this
+				}
+				curr = curr.left
+			} else {
+				//right
+				if (!curr.right) {
+					curr.right = newNode
+					return this
+				}
+				curr = curr.right
+			}
+		}
 	}
-
-	loopup(value){
-
+	lookup(value) {
 		if (!this.root) {
-			return null
-		} else {
-			let currentNode = this.root
-			while(currentNode) {
-				if (value < currentNode.value) {
-					currentNode = currentNode.left
-				} else if (value > currentNode.value) {
-					currentNode = currentNode.right
-				} else if (value === currentNode.value) {
-					return currentNode
-				}
-			}
-			return null
+			return "Nothing to lookup"
 		}
-	}
-	remove(){
 
+		let curr = this.root
+		while(curr) {
+			if (value < curr.value) {
+				curr = curr.left
+			} else if (value > curr.value) {
+				curr = curr.right
+			} else if (value === curr.value) {
+				return console.log(curr)
+			}
+
+		}
+		return console.log(false)
 	}
 }
 
-let myTree = new BinarySearchTree()
-myTree.insert(5)
-myTree.insert(2)
-myTree.insert(3)
-myTree.insert(6)
-myTree.insert(1)
-myTree.insert(4)
 
-
-console.log(myTree.loopup(2))
+let myTree = new Tree()
