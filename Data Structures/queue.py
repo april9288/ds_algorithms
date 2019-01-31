@@ -9,11 +9,11 @@ class Queue:
 		self.last = None
 		self.length = 0
 
-	def peek(self):
-		return self.first
-
 	def isEmpty(self):
 		return bool(self.length is 0)
+
+	def peek(self):
+		return self.first
 
 	def push(self,value):
 		newNode = Node(value)
