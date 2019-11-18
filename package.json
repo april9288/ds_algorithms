@@ -12,10 +12,7 @@
   },
   "author": "James Kim",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/april9288/ds_algorithms/issues"
-  },
-  "homepage": "https://github.com/april9288/ds_algorithms#readme",
+  "homepage": "master - edit",
   "dependencies": {
     "express": "^4.17.1"
   }
