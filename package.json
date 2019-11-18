@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/april9288/ds_algorithms/issues"
   },
-  "homepage": "https://github.com/april9288/ds_algorithms#readme"
+  "homepage": "https://github.com/april9288/ds_algorithms#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
