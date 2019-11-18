@@ -1,7 +1,7 @@
 {
   "name": "ds_algorithms",
-  "version": "1.0.1",
-  "description": "newfeat1",
+  "version": "1.0.2",
+  "description": "master---",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
